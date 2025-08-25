@@ -22,10 +22,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 rounded-full bg-content1 px-4 py-1.5 ring-1 ring-divider shadow-sm"
+          className="inline-flex items-center gap-2 rounded-full bg-content1 px-4 py-1.5 ring-1 ring-divider"
         >
           <HeroAvatarGroup />
-          <span className="text-xs text-default-800">1000+ accounts ipsum</span>
+          <span className="text-xs font-semibold text-default-600">
+            1000+ accounts ipsum
+          </span>
         </motion.div>
 
         <Spacer y={4} />

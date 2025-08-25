@@ -10,27 +10,23 @@ export default function Faqs() {
   return (
     <section
       id="faq"
-      className="mx-auto bg-content2/40 w-full  px-4 py-16 md:py-32 md:px-6 lg:px-8 scroll-mt-28"
+      className="mx-auto w-full  px-4 py-16 md:py-32 md:px-6 lg:px-8 scroll-mt-28"
     >
       <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-6">
         {/* Pill */}
-        <div className="inline-flex items-center gap-2 rounded-full bg-content1 px-4 py-2 ring-1 ring-divider shadow-sm">
-          <span className="text-primary-500">
-            <Icon icon="mdi:help-rhombus" width={20} height={20} />
+        <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-3 text-center">
+          <span className="text-sm font-medium bg-content1 px-4 py-1 rounded-full  border border-divider text-default-500 tracking-wider uppercase">
+            FAQ
           </span>
-          <span className="text-sm text-default-800">
-            Frequently Asked Questions
-          </span>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-default-900">
+            Got Questions?
+          </h2>
+          <p className="text-lg text-default-600 max-w-2xl">
+            We&apos;ve got answers.
+          </p>
         </div>
         {/* Heading */}
-        <h2 className="px-2 text-center font-bold tracking-tight">
-          <span className="block text-3xl md:text-5xl text-default-900">
-            Got questions?
-          </span>
-          <span className="block text-3xl md:text-5xl bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent">
-            We&apos;ve got answers
-          </span>
-        </h2>
+
         <Spacer y={2} />
         <Accordion
           fullWidth

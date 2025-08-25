@@ -20,17 +20,12 @@ export default function AuthCard({
 }: AuthCardProps) {
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <div className="rounded-2xl border border-divider bg-content1 shadow-sm flex w-full max-w-[420px] flex-col gap-6 px-6 py-8">
+      <div className="rounded-2xl border border-divider bg-content1 flex w-full max-w-[420px] flex-col gap-6 px-6 py-8">
         <LazyMotion features={domAnimation}>
           <m.div layout className="flex flex-col items-center pb-2">
             {showBack && (
               <m.div className="w-full mb-2">
-                <Button
-                  isIconOnly
-                  size="sm"
-                  variant="flat"
-                  onPress={onBack}
-                >
+                <Button isIconOnly size="sm" variant="flat" onPress={onBack}>
                   <Icon
                     className="text-default-500"
                     icon="solar:alt-arrow-left-linear"

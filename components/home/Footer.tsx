@@ -22,8 +22,11 @@ const footerSections = [
 
 export default function Footer() {
   return (
-    <footer id="contact" className="relative  border-divider overflow-hidden">
-      <div className="relative z-10 mx-auto max-w-6xl px-4 md:px-6 lg:px-8 py-16">
+    <footer
+      id="contact"
+      className="relative  border-divider border-t border-divider overflow-hidden"
+    >
+      <div className="relative z-10  mx-auto max-w-6xl px-4 md:px-6 lg:px-8 py-16">
         {/* Main footer content */}
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-10">
           {/* Logo and description */}

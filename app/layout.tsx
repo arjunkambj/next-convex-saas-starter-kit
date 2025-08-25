@@ -23,7 +23,7 @@ export default function RootLayout({
     <ConvexAuthNextjsServerProvider>
       <html lang="en">
         <body
-          className={`${inter.className} antialiased bg-background min-h-dvh`}
+          className={`${inter.className} antialiased bg-background/50 dark:bg-background min-h-dvh`}
         >
           <Providers>{children}</Providers>
         </body>

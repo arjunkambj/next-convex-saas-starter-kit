@@ -97,7 +97,7 @@ const config = heroui({
           DEFAULT: "#d4d4d8",
         },
         // Backgrounds and Content
-        background: "#fafafa",
+        background: "#f9fafc",
         foreground: "#11181C",
         content1: {
           DEFAULT: "#ffffff",

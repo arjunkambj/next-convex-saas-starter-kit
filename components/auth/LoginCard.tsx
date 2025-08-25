@@ -84,7 +84,7 @@ export default function LoginCard() {
 
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <div className="rounded-2xl border border-divider bg-content1 shadow-medium flex w-full max-w-[420px] flex-col gap-6 px-6 py-8">
+      <div className="rounded-2xl border border-divider bg-content1 shadow-sm flex w-full max-w-[420px] flex-col gap-6 px-6 py-8">
         <LazyMotion features={domAnimation}>
           <m.div layout className="flex flex-col items-center pb-2">
             {page > 0 && (
@@ -311,11 +311,11 @@ export default function LoginCard() {
         {/* Terms and Privacy Policy - visible on all pages */}
         <p className="text-tiny text-default-400 text-center">
           By continuing, you agree to our{" "}
-          <Link href="/terms" className="text-tiny text-primary">
+          <Link href="/privacy/terms" className="text-tiny text-primary">
             Terms
           </Link>{" "}
           and{" "}
-          <Link href="/privacy" className="text-tiny text-primary">
+          <Link href="/privacy/policy" className="text-tiny text-primary">
             Privacy
           </Link>
         </p>

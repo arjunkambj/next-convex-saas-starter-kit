@@ -124,7 +124,10 @@ export default function Pricing() {
   const [billing, setBilling] = useState<BillingCycle>("monthly");
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-4 py-32 md:px-6 lg:px-8">
+    <section
+      id="pricing"
+      className="mx-auto w-full max-w-6xl px-4 py-24 md:px-6 lg:px-8 scroll-mt-28"
+    >
       <div className="flex w-full flex-col items-center gap-4 text-center">
         {/* Pill */}
         <div className="inline-flex items-center gap-2 rounded-full bg-content1 px-4 py-2 ring-1 ring-divider shadow-sm">
@@ -136,10 +139,10 @@ export default function Pricing() {
         {/* Heading */}
         <h2 className="px-2 text-center font-bold tracking-tight">
           <span className="block text-3xl md:text-4xl text-default-900">
-            Simple, Transparent Pricing
+            Simple, transparent pricing
           </span>
           <span className="block text-3xl md:text-4xl bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent">
-            Choose What Fits Today
+            Start free. Scale when you’re ready.
           </span>
         </h2>
       </div>

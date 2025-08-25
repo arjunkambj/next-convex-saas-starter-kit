@@ -9,7 +9,10 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative w-full overflow-hidden sm:px-6 lg:px-8 pt-32 md:pt-44 pb-32">
+    <section
+      id="features"
+      className="relative w-full overflow-hidden sm:px-6 lg:px-8 pt-32 md:pt-44 pb-28 scroll-mt-28"
+    >
       {/* Subtle background glows */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/2 -top-40 h-[28rem] w-[90rem] -translate-x-1/2 rounded-full bg-gradient-to-b from-primary-500/15 via-default-300/10 to-transparent blur-3xl" />
@@ -17,7 +20,7 @@ export default function Hero() {
         <div className="absolute -right-24 top-40 h-56 w-56 rounded-full bg-primary-400/15 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-5xl text-center">
+      <div className="mx-auto max-w-6xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -36,9 +39,9 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="font-extrabold tracking-tight text-4xl sm:text-5xl md:text-[56px] xl:text-[64px] leading-[1.08] bg-gradient-to-r from-default-900 to-default-700 bg-clip-text text-transparent"
         >
-          Lorem ipsum dolor sit amet,
+          Track leads. Convert faster.
           <br className="hidden sm:block" />
-          consectetur adipi elit.
+          Grow with clarity.
         </motion.h1>
 
         <motion.p
@@ -47,8 +50,8 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-3 text-[15px] sm:text-base md:text-[18px] text-default-600 max-w-2xl mx-auto"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          LeadNova gives you a clean, real‑time view of your funnel so you can
+          focus on actions that drive revenue—not spreadsheets.
         </motion.p>
 
         <motion.div
@@ -65,10 +68,17 @@ export default function Hero() {
             endContent={<Icon icon="lucide:chevron-right" width={20} />}
             className="bg-gradient-to-br from-primary-500 to-primary-600 text-white"
           >
-            Start Tracking
+            Get Started
           </Button>
-          <Button variant="flat" color="default" size="lg" className="px-10">
-            Free Demo
+          <Button
+            as={Link}
+            href="#pricing"
+            variant="flat"
+            color="default"
+            size="lg"
+            className="px-8"
+          >
+            See pricing
           </Button>
         </motion.div>
 
@@ -86,7 +96,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.5 }}
-        className="mt-8 md:mt-8"
+        className="mt-10 md:mt-10"
       >
         <HeroAppBox />
       </motion.div>

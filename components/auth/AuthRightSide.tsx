@@ -7,7 +7,7 @@ export default function AuthRightSide({ className }: { className?: string }) {
       className={`relative hidden h-full min-h-[97dvh] flex-col-reverse rounded-md p-10 rounded-l-2xl lg:flex ${className}`}
       style={{
         backgroundImage:
-          "url(https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/white-building.jpg)",
+          "linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url(https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/white-building.jpg)",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -25,7 +25,7 @@ export default function AuthRightSide({ className }: { className?: string }) {
           description="Founder & CEO at ACME"
           name="Bruno Reichert"
         />
-        <p className="w-full text-right text-2xl text-black/60">
+        <p className="w-full text-right text-2xl text-black/70 drop-shadow">
           <span className="font-medium">“</span>
           <span className="font-normal italic">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget

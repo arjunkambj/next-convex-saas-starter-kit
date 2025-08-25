@@ -22,15 +22,18 @@ const footerSections = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-background border-t border-divider overflow-hidden">
-      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 lg:px-12 py-16">
+    <footer
+      id="contact"
+      className="relative bg-background border-t border-divider overflow-hidden"
+    >
+      <div className="relative z-10 mx-auto max-w-6xl px-4 md:px-6 lg:px-8 py-16">
         {/* Main footer content */}
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-10">
           {/* Logo and description */}
           <div className="md:col-span-2">
             <Logo />
             <p className="mt-4 text-sm leading-6 text-default-600 max-w-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+              LeadNova helps teams see where leads come from and what converts.
             </p>
             {/* Social links */}
             <div className="mt-6 flex space-x-6">

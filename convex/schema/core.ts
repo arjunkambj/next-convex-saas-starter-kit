@@ -31,9 +31,15 @@ export const users = defineTable({
       v.literal("inactive"),
       v.literal("invited"),
       v.literal("suspended"),
-      v.literal("deleted")
+      v.literal("deleted"),
+      v.literal("expired")
     )
   ),
+
+  ///// Invitation fields
+  invitedBy: v.optional(v.id("users")),
+  invitedAt: v.optional(v.number()),
+  inviteExpiresAt: v.optional(v.number()),
 
   ///// You can assign clients or specific permissions to users
   assignedClients: v.optional(v.array(v.id("organizations"))),
@@ -45,6 +51,7 @@ export const users = defineTable({
   updatedAt: v.optional(v.number()),
 })
   .index("email", ["email"])
+  .index("phone", ["phone"])
   .index("byEmailVerificationTime", ["emailVerificationTime"])
   .index("byOrganization", ["organizationId"])
   .index("byIsOnboarded", ["isOnboarded"])
@@ -70,59 +77,7 @@ export const organizations = defineTable({
   .index("bySlug", ["slug"])
   .index("byOwner", ["ownerId"]);
 
-///// Invitations
-export const invites = defineTable({
-  organizationId: v.id("organizations"),
-
-  type: v.union(
-    v.literal("team_member"),
-    v.literal("client_access")
-  ),
-
-  targetOrganizationId: v.optional(v.id("organizations")),
-
-  email: v.string(),
-  role: v.optional(
-    v.union(
-      v.literal("clientAdmin"),
-      v.literal("manager"),
-      v.literal("member"),
-      v.literal("superAdmin"),
-      v.literal("oppsDev")
-    )
-  ),
-
-  status: v.union(
-    v.literal("pending"),
-    v.literal("accepted"),
-    v.literal("rejected"),
-    v.literal("expired"),
-    v.literal("cancelled")
-  ),
-
-  invitedBy: v.object({
-    id: v.id("users"),
-    name: v.optional(v.string()),
-    email: v.string(),
-  }),
-
-  invitationToken: v.string(),
-  expiresAt: v.number(),
-
-  acceptedAt: v.optional(v.number()),
-  acceptedBy: v.optional(v.id("users")),
-
-  createdAt: v.number(),
-  updatedAt: v.optional(v.number()),
-})
-  .index("byOrganization", ["organizationId"])
-  .index("byEmail", ["email"])
-  .index("byStatus", ["status"])
-  .index("byToken", ["invitationToken"])
-  .index("byExpiresAt", ["expiresAt"])
-  .index("byOrganizationAndStatus", ["organizationId", "status"])
-  .index("byEmailAndOrganization", ["email", "organizationId"]);
-
+///// Invitation
 export const onboarding = defineTable({
   // User and organization context
   userId: v.id("users"),

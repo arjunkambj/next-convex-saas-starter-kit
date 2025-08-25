@@ -52,7 +52,7 @@ export default function Navbar() {
 
         <Button
           as={Link}
-          href="/login"
+          href="/signin"
           className="hidden bg-gradient-to-br from-primary-500 to-primary-600 text-white md:flex"
         >
           Get Started
@@ -92,7 +92,7 @@ export default function Navbar() {
             ))}
             <Button
               as={Link}
-              href="/login"
+              href="/signin"
               color="primary"
               radius="lg"
               size="sm"

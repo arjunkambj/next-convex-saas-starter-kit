@@ -16,6 +16,7 @@
     "@oslojs/crypto": "^1.0.1",
     "@react-email/render": "^1.2.1",
     "convex": "^1.26.1",
+    "convex-helpers": "^0.1.104",
     "framer-motion": "^12.23.12",
     "jotai": "^2.13.1",
     "next": "15.5.0",

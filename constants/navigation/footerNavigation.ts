@@ -53,8 +53,8 @@ export const footerNavigation = {
     {
       name: "Data Protection",
       href: "/data-protection",
-      icon: "solar:lock-password-linear",
-      activeIcon: "solar:lock-password-bold",
+      icon: "solar:shield-linear",
+      activeIcon: "solar:shield-bold",
     },
     {
       name: "Data Deletion",

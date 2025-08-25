@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Logo from "../shared/Logo";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { homeNavLinks } from "@/configs/navigation/homeNavlink";
+import { homeNavLinks } from "@/constants/navigation/homeNavlink";
 import { Button } from "@heroui/react";
 
 export default function Navbar() {

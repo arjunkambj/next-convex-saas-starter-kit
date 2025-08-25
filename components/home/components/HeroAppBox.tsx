@@ -9,7 +9,7 @@ export default function HeroAppBox() {
             <div className="overflow-hidden rounded-xl ring-1 ring-divider">
               <Image
                 removeWrapper
-                src="/heroImage.png"
+                src="https://placehold.co/1400x800/png?text=Hero+Preview"
                 alt="App dashboard preview"
                 className="h-auto w-full object-cover"
               />

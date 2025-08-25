@@ -1,42 +1,30 @@
 const faqs = [
   {
-    title: "What is Acme?",
+    title: "What is LeadNova?",
     content:
-      "Acme is a design system for building performant, accessible and beautiful web experiences.",
+      "LeadNova helps you track leads and conversions with a fast, modern dashboard.",
   },
   {
-    title: "How can I apply to the Open Source Discount?",
+    title: "What billing cycles do you support?",
     content:
-      "The Open Source Discount is available for everyone who is building an open source project. You can apply to the discount by sending an email to support@acme.com",
+      "We support monthly and yearly billing. Yearly plans include ~25% savings.",
   },
   {
-    title: "Can I use Acme for my freelance projects?",
-    content:
-      "Yes, you can use Acme for your freelance projects. You can purchase the Freelancer License from our website.",
-  },
-  {
-    title: "What is your refund policy?",
-    content:
-      "We do not provide refunds. However, we can help you with any issues you may have.",
+    title: "Do you offer a refund?",
+    content: "Yes. We offer a 14-day money-back guarantee on paid plans.",
   },
   {
     title: "Can I cancel my subscription?",
-    content: "Yes, you can cancel and renew your subscription at any time.",
+    content: "Yes, you can cancel or change plans at any time from settings.",
   },
   {
-    title: "How do I switch from quarterly to yearly subscription?",
-    content:
-      "You can switch from quarterly to yearly subscription by canceling your quarterly subscription and purchasing a yearly subscription.",
+    title: "Do you have a free plan?",
+    content: "Yes, our Basic plan is free and great for getting started.",
   },
   {
-    title: "Do you have monthly payment plans?",
+    title: "Do you offer discounts?",
     content:
-      "No, we do not provide monthly payment plans. You can purchase a quarterly or yearly subscription.",
-  },
-  {
-    title: "Do you have discounts for students?",
-    content:
-      "Yes, we provide a 50% discount for students. You can apply to the discount by sending an email to support@acme.com",
+      "We occasionally run promotions. For student or nonprofit inquiries, email support@leadnova.com.",
   },
 ];
 

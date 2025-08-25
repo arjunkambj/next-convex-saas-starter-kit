@@ -23,9 +23,9 @@ const footerSections = [
 export default function Footer() {
   return (
     <footer className="relative bg-background border-t border-divider overflow-hidden">
-      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 lg:px-12 py-12">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 lg:px-12 py-16">
         {/* Main footer content */}
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-8">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-10">
           {/* Logo and description */}
           <div className="md:col-span-2">
             <Logo />
@@ -33,7 +33,7 @@ export default function Footer() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
             </p>
             {/* Social links */}
-            <div className="mt-6 flex space-x-4">
+            <div className="mt-6 flex space-x-6">
               {footerNavigation.social.map((item) => (
                 <Link
                   key={item.name}
@@ -54,7 +54,7 @@ export default function Footer() {
               <h3 className="text-sm font-semibold leading-6 text-foreground mb-4">
                 {section.title}
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {section.links.map((item) => (
                   <li key={item.name}>
                     <Link
@@ -72,11 +72,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom section */}
-        <div className="mt-12 border-t border-divider pt-8">
+        <div className="mt-16 border-t border-divider pt-10">
           <div className="flex justify-center">
             {/* Copyright */}
             <p className="text-xs text-default-500">
-              &copy; 2025 Acme Inc. All rights reserved.
+              &copy; 2025 LeadNova. All rights reserved.
             </p>
           </div>
         </div>

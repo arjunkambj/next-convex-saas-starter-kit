@@ -84,17 +84,17 @@ export default function SignupCard() {
   const handleSubmit = page === 0 ? handleEmailSubmit : handleDetailsSubmit;
 
   const getPageTitle = () => {
-    if (page === 0) return "Create account";
+    if (page === 0) return "Get started for free";
     return "Complete your profile";
   };
 
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <div className="rounded-large bg-content1 shadow-small flex w-full max-w-sm flex-col gap-4 px-8 pt-6 pb-10">
+      <div className="rounded-2xl border border-divider bg-content1 flex w-full max-w-[420px] flex-col gap-6 px-6 py-8">
         <LazyMotion features={domAnimation}>
-          <m.div layout className="flex min-h-[40px] items-center gap-2 pb-2">
+          <m.div layout className="flex flex-col items-center pb-2">
             {page > 0 && (
-              <m.div>
+              <m.div className="w-full mb-2">
                 <Button
                   isIconOnly
                   size="sm"
@@ -111,23 +111,26 @@ export default function SignupCard() {
             )}
             <m.h1
               layout
-              className="text-xl font-medium"
+              className="text-3xl font-semibold tracking-tight text-center"
               transition={{ duration: 0.25 }}
             >
-              {getPageTitle()}
+              <span className="bg-gradient-to-r from-default-900 to-default-700 bg-clip-text text-transparent">
+                {getPageTitle()}
+              </span>
             </m.h1>
           </m.div>
 
           {/* OAuth buttons and email - only on page 0 */}
           {page === 0 && (
             <>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-3">
                 <Button
                   startContent={
                     <Icon icon="flat-color-icons:google" width={24} />
                   }
                   variant="flat"
                   fullWidth
+                  className="bg-content2 hover:bg-content3"
                 >
                   Continue with Google
                 </Button>
@@ -141,11 +144,12 @@ export default function SignupCard() {
                   }
                   variant="flat"
                   fullWidth
+                  className="bg-content2 hover:bg-content3"
                 >
                   Continue with Github
                 </Button>
               </div>
-              <div className="flex items-center gap-4 py-2">
+              <div className="flex items-center gap-4 py-3">
                 <Divider className="flex-1" />
                 <p className="text-tiny text-default-500 shrink-0">OR</p>
                 <Divider className="flex-1" />
@@ -157,7 +161,7 @@ export default function SignupCard() {
             <m.form
               key={page}
               animate="center"
-              className="flex flex-col gap-3"
+              className="flex flex-col gap-4"
               custom={direction}
               exit="exit"
               initial="enter"
@@ -193,8 +197,8 @@ export default function SignupCard() {
                   />
                   <Button
                     fullWidth
-                    color="primary"
                     type="submit"
+                    className="bg-gradient-to-br from-primary-500 to-primary-600 text-white"
                     startContent={
                       <Icon
                         className="pointer-events-none text-2xl"
@@ -294,7 +298,11 @@ export default function SignupCard() {
                       setConfirmPassword(value);
                     }}
                   />
-                  <Button fullWidth color="primary" type="submit">
+                  <Button
+                    fullWidth
+                    className="bg-gradient-to-br from-primary-500 to-primary-600 text-white"
+                    type="submit"
+                  >
                     Create Account
                   </Button>
                 </>
@@ -304,7 +312,7 @@ export default function SignupCard() {
         </LazyMotion>
 
         {/* Sign in link */}
-        <p className="text-small text-center">
+        <p className="text-small text-default-500 text-center">
           Already have an account?{" "}
           <Link href="/login" className="text-primary">
             Sign in
@@ -314,11 +322,11 @@ export default function SignupCard() {
         {/* Terms and Privacy Policy */}
         <p className="text-tiny text-default-400 text-center">
           By continuing, you agree to our{" "}
-          <Link href="/terms" className="text-tiny">
+          <Link href="/terms" className="text-tiny text-primary">
             Terms
           </Link>{" "}
           and{" "}
-          <Link href="/privacy" className="text-tiny">
+          <Link href="/privacy" className="text-tiny text-primary">
             Privacy
           </Link>
         </p>

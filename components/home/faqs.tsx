@@ -25,7 +25,7 @@ export default function Faqs() {
             Got Questions?
           </span>
           <span className="block text-3xl md:text-5xl bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent">
-            We've Got Answers
+            We&apos;ve Got Answers
           </span>
         </h2>
         <Spacer y={2} />

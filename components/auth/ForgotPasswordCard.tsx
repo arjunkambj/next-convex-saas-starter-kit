@@ -94,18 +94,18 @@ export default function ForgotPasswordCard() {
         : handlePasswordSubmit;
 
   const getPageTitle = () => {
-    if (page === 0) return "Forgot password?";
-    if (page === 1) return "Enter verification code";
-    return "Reset password";
+    if (page === 0) return "Reset your password";
+    if (page === 1) return "Check your email";
+    return "Create new password";
   };
 
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <div className="rounded-large bg-content1 shadow-small flex w-full max-w-sm flex-col gap-4 px-8 pt-6 pb-10">
+      <div className="rounded-2xl border border-divider bg-content1 flex w-full max-w-[420px] flex-col gap-6 px-6 py-8">
         <LazyMotion features={domAnimation}>
-          <m.div layout className="flex min-h-[40px] items-center gap-2 pb-2">
+          <m.div layout className="flex flex-col items-center pb-2">
             {page > 0 && (
-              <m.div>
+              <m.div className="w-full mb-2">
                 <Button
                   isIconOnly
                   size="sm"
@@ -122,17 +122,19 @@ export default function ForgotPasswordCard() {
             )}
             <m.h1
               layout
-              className="text-xl font-medium"
+              className="text-2xl font-semibold tracking-tight text-center"
               transition={{ duration: 0.25 }}
             >
-              {getPageTitle()}
+              <span className="bg-gradient-to-r from-default-900 to-default-700 bg-clip-text text-transparent">
+                {getPageTitle()}
+              </span>
             </m.h1>
           </m.div>
 
           {page === 0 && (
-            <p className="text-small text-default-500">
-              Don&apos;t worry! Enter your email and we&apos;ll send you a
-              verification code to reset your password.
+            <p className="text-small text-default-500 text-center">
+              Enter your email and we&apos;ll send you a link to reset your
+              password
             </p>
           )}
 
@@ -140,7 +142,7 @@ export default function ForgotPasswordCard() {
             <m.form
               key={page}
               animate="center"
-              className="flex flex-col gap-3"
+              className="flex flex-col gap-4"
               custom={direction}
               exit="exit"
               initial="enter"
@@ -174,31 +176,40 @@ export default function ForgotPasswordCard() {
                       setEmail(value);
                     }}
                   />
-                  <Button fullWidth color="primary" type="submit">
+                  <Button
+                    fullWidth
+                    size="lg"
+                    className="bg-gradient-to-br from-primary-500 to-primary-600 text-white"
+                    type="submit"
+                  >
                     Send Reset Code
                   </Button>
                 </>
               ) : page === 1 ? (
                 <>
-                  <p className="text-small text-default-500 pb-2">
+                  <p className="text-small text-default-500 text-center">
                     We&apos;ve sent a verification code to {email}
                   </p>
-                  <div className="flex justify-center">
-                    <InputOtp
-                      length={6}
-                      value={otp}
-                      onValueChange={setOtp}
-                      variant="bordered"
-                      errorMessage={
-                        !isOtpValid ? "Invalid verification code" : undefined
-                      }
-                      isInvalid={!isOtpValid}
-                    />
-                  </div>
-                  <Button fullWidth color="primary" type="submit">
+                  <InputOtp
+                    length={6}
+                    value={otp}
+                    onValueChange={setOtp}
+                    variant="bordered"
+                    className="mx-auto"
+                    errorMessage={
+                      !isOtpValid ? "Invalid verification code" : undefined
+                    }
+                    isInvalid={!isOtpValid}
+                  />
+                  <Button
+                    fullWidth
+                    size="lg"
+                    className="bg-gradient-to-br from-primary-500 to-primary-600 text-white"
+                    type="submit"
+                  >
                     Verify Code
                   </Button>
-                  <p className="text-small text-center">
+                  <p className="text-small text-default-500 text-center">
                     Didn&apos;t receive code?{" "}
                     <Link href="#" className="text-primary">
                       Resend
@@ -207,7 +218,7 @@ export default function ForgotPasswordCard() {
                 </>
               ) : (
                 <>
-                  <p className="text-small text-default-500 pb-2">
+                  <p className="text-small text-default-500 text-center">
                     Enter your new password below
                   </p>
                   <Input
@@ -276,7 +287,11 @@ export default function ForgotPasswordCard() {
                       setConfirmPassword(value);
                     }}
                   />
-                  <Button fullWidth color="primary" type="submit">
+                  <Button
+                    fullWidth
+                    className="bg-gradient-to-br from-primary-500 to-primary-600 text-white"
+                    type="submit"
+                  >
                     Reset Password
                   </Button>
                 </>
@@ -286,9 +301,9 @@ export default function ForgotPasswordCard() {
         </LazyMotion>
 
         {/* Back to login link */}
-        <p className="text-small text-center">
+        <p className="text-small text-default-500 text-center">
           Remember your password?{" "}
-          <Link href="/login" className="text-primary">
+          <Link href="/login" className="text-primary ">
             Sign in
           </Link>
         </p>

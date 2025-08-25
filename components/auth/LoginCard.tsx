@@ -77,17 +77,18 @@ export default function LoginCard() {
 
   const getPageTitle = () => {
     if (page === 0) return "Welcome back";
-    if (page === 1) return "Enter verification code";
-    return "Enter password";
+    if (page === 1) return "Check your email";
+    if (page === 2) return "Enter your password";
+    return "Sign in";
   };
 
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <div className="rounded-large bg-content1 shadow-small flex w-full max-w-sm flex-col gap-4 px-8 pt-6 pb-10">
+      <div className="rounded-2xl border border-divider bg-content1 shadow-medium flex w-full max-w-[420px] flex-col gap-6 px-6 py-8">
         <LazyMotion features={domAnimation}>
-          <m.div layout className="flex min-h-[40px] items-center gap-2 pb-2">
+          <m.div layout className="flex flex-col items-center pb-2">
             {page > 0 && (
-              <m.div>
+              <m.div className="w-full mb-2">
                 <Button
                   isIconOnly
                   size="sm"
@@ -104,23 +105,26 @@ export default function LoginCard() {
             )}
             <m.h1
               layout
-              className="text-xl font-medium"
+              className="text-3xl font-semibold tracking-tight text-center"
               transition={{ duration: 0.25 }}
             >
-              {getPageTitle()}
+              <span className="bg-gradient-to-r from-default-900 to-default-700 bg-clip-text text-transparent">
+                {getPageTitle()}
+              </span>
             </m.h1>
           </m.div>
 
           {/* OAuth buttons - always visible on page 0 */}
           {page === 0 && (
             <>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-3">
                 <Button
                   startContent={
                     <Icon icon="flat-color-icons:google" width={24} />
                   }
                   variant="flat"
                   fullWidth
+                  className="bg-content2 hover:bg-content3"
                 >
                   Continue with Google
                 </Button>
@@ -134,11 +138,12 @@ export default function LoginCard() {
                   }
                   variant="flat"
                   fullWidth
+                  className="bg-content2 hover:bg-content3"
                 >
                   Continue with Github
                 </Button>
               </div>
-              <div className="flex items-center gap-4 py-2">
+              <div className="flex items-center gap-4 py-3">
                 <Divider className="flex-1" />
                 <p className="text-tiny text-default-500 shrink-0">OR</p>
                 <Divider className="flex-1" />
@@ -150,7 +155,7 @@ export default function LoginCard() {
             <m.form
               key={page}
               animate="center"
-              className="flex flex-col gap-3"
+              className="flex w-full flex-col gap-4"
               custom={direction}
               exit="exit"
               initial="enter"
@@ -163,6 +168,7 @@ export default function LoginCard() {
               {page === 0 ? (
                 <>
                   <Input
+                    className="w-full"
                     errorMessage={
                       !isEmailValid ? "Enter a valid email" : undefined
                     }
@@ -186,8 +192,8 @@ export default function LoginCard() {
                   />
                   <Button
                     fullWidth
-                    color="primary"
                     type="submit"
+                    className="bg-gradient-to-br from-primary-500 to-primary-600 text-white"
                     startContent={
                       <Icon
                         className="pointer-events-none text-2xl"
@@ -200,25 +206,28 @@ export default function LoginCard() {
                 </>
               ) : page === 1 ? (
                 <>
-                  <p className="text-small text-default-500 pb-2">
+                  <p className="text-small text-default-500 text-center">
                     We&apos;ve sent a verification code to {email}
                   </p>
-                  <div className="flex justify-center">
-                    <InputOtp
-                      length={6}
-                      value={otp}
-                      onValueChange={setOtp}
-                      variant="bordered"
-                      errorMessage={
-                        !isOtpValid ? "Invalid verification code" : undefined
-                      }
-                      isInvalid={!isOtpValid}
-                    />
-                  </div>
-                  <Button fullWidth color="primary" type="submit">
+                  <InputOtp
+                    length={6}
+                    value={otp}
+                    onValueChange={setOtp}
+                    variant="bordered"
+                    className="w-full max-w-xs mx-auto"
+                    errorMessage={
+                      !isOtpValid ? "Invalid verification code" : undefined
+                    }
+                    isInvalid={!isOtpValid}
+                  />
+                  <Button
+                    fullWidth
+                    className="bg-gradient-to-br from-primary-500 to-primary-600 text-white"
+                    type="submit"
+                  >
                     Verify
                   </Button>
-                  <p className="text-small text-center">
+                  <p className="text-small text-default-500 text-center">
                     Didn&apos;t receive code?{" "}
                     <Link href="#" className="text-primary">
                       Resend
@@ -247,10 +256,10 @@ export default function LoginCard() {
                       !isPasswordValid ? "Enter a valid password" : undefined
                     }
                     isInvalid={!isPasswordValid}
-                    label="Password"
                     name="password"
                     placeholder="Enter your password"
                     type={isVisible ? "text" : "password"}
+                    size="lg"
                     value={password}
                     variant="bordered"
                     onValueChange={(value) => {
@@ -258,10 +267,15 @@ export default function LoginCard() {
                       setPassword(value);
                     }}
                   />
-                  <Button fullWidth color="primary" type="submit">
+                  <Button
+                    fullWidth
+                    size="lg"
+                    className="bg-gradient-to-br from-primary-500 to-primary-600 text-white"
+                    type="submit"
+                  >
                     Sign In
                   </Button>
-                  <p className="text-small text-center">
+                  <p className="text-small text-default-500 text-center">
                     <Link href="/forgot-password" className="text-primary">
                       Forgot password?
                     </Link>
@@ -274,7 +288,7 @@ export default function LoginCard() {
 
         {/* Bottom links - conditional based on page */}
         {page === 0 && (
-          <p className="text-small text-center">
+          <p className="text-small text-default-500 text-center">
             Don&apos;t have an account?{" "}
             <Link href="/signup" className="text-primary">
               Sign up
@@ -283,7 +297,7 @@ export default function LoginCard() {
         )}
 
         {page === 1 && (
-          <p className="text-small text-center">
+          <p className="text-small text-default-500 text-center">
             <Link
               href="#"
               className="text-primary"
@@ -297,11 +311,11 @@ export default function LoginCard() {
         {/* Terms and Privacy Policy - visible on all pages */}
         <p className="text-tiny text-default-400 text-center">
           By continuing, you agree to our{" "}
-          <Link href="/terms" className="text-tiny">
+          <Link href="/terms" className="text-tiny text-primary">
             Terms
           </Link>{" "}
           and{" "}
-          <Link href="/privacy" className="text-tiny">
+          <Link href="/privacy" className="text-tiny text-primary">
             Privacy
           </Link>
         </p>

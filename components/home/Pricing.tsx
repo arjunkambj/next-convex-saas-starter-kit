@@ -71,7 +71,7 @@ function PlanCard({ plan, billing }: { plan: Plan; billing: BillingCycle }) {
           : "border-divider bg-content1"
       }`}
     >
-      <CardBody className="p-5 md:p-6">
+      <CardBody className="p-6 md:p-8">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-base font-semibold text-default-900">
@@ -106,14 +106,14 @@ function PlanCard({ plan, billing }: { plan: Plan; billing: BillingCycle }) {
 
         <Button
           color={plan.highlight ? "primary" : "default"}
-          className={`mt-5 w-full ${plan.highlight ? "text-white" : "bg-content2 hover:bg-content3"}`}
+          className={`mt-6 w-full ${plan.highlight ? "text-white" : "bg-content2 hover:bg-content3"}`}
           radius="sm"
         >
           Select Plan
         </Button>
 
         <p className="mt-2 text-center text-[11px] text-default-500">
-          7‑Day Money‑Back Guarantee
+          14‑Day Money‑Back Guarantee
         </p>
       </CardBody>
     </Card>
@@ -124,7 +124,7 @@ export default function Pricing() {
   const [billing, setBilling] = useState<BillingCycle>("monthly");
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-4 py-20 md:px-6 lg:px-8">
+    <section className="mx-auto w-full max-w-6xl px-4 py-32 md:px-6 lg:px-8">
       <div className="flex w-full flex-col items-center gap-4 text-center">
         {/* Pill */}
         <div className="inline-flex items-center gap-2 rounded-full bg-content1 px-4 py-2 ring-1 ring-divider shadow-sm">
@@ -151,11 +151,21 @@ export default function Pricing() {
           onSelectionChange={(k) => setBilling(k as BillingCycle)}
         >
           <Tab key="monthly" title="Billed Monthly" />
-          <Tab key="yearly" title="Billed Yearly -25%" />
+          <Tab
+            key="yearly"
+            title={
+              <div className="flex items-center gap-2">
+                <span>Billed Yearly</span>
+                <Chip size="sm" color="success" variant="flat">
+                  -25%
+                </Chip>
+              </div>
+            }
+          />
         </Tabs>
       </div>
 
-      <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {plans.map((p) => (
           <PlanCard key={p.id} plan={p} billing={billing} />
         ))}
@@ -164,7 +174,7 @@ export default function Pricing() {
       {/* Enterprise */}
       <Card
         shadow="none"
-        className="mt-6 rounded-2xl border border-divider bg-content1"
+        className="mt-8 rounded-2xl border border-divider bg-content1"
       >
         <CardBody className="flex flex-col items-start gap-4 p-5 md:flex-row md:items-center md:justify-between md:p-6">
           <div className="flex items-center gap-3">
@@ -182,7 +192,11 @@ export default function Pricing() {
               </p>
             </div>
           </div>
-          <Button radius="sm" className="bg-content2 hover:bg-content3">
+          <Button
+            radius="sm"
+            size="lg"
+            className="bg-content2 hover:bg-content3"
+          >
             Contact Sales
           </Button>
         </CardBody>

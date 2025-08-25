@@ -14,11 +14,8 @@ export default function Hero() {
       className="relative w-full overflow-hidden sm:px-6 lg:px-8 pt-32 md:pt-44 pb-28 scroll-mt-28"
     >
       {/* Subtle background glows */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 -top-40 h-[28rem] w-[90rem] -translate-x-1/2 rounded-full bg-gradient-to-b from-primary-500/15 via-default-300/10 to-transparent blur-3xl" />
-        <div className="absolute -left-24 top-24 h-56 w-56 rounded-full bg-secondary-500/15 blur-3xl" />
-        <div className="absolute -right-24 top-40 h-56 w-56 rounded-full bg-primary-400/15 blur-3xl" />
-      </div>
+
+      {/* Radial Gradient Background from Bottom */}
 
       <div className="mx-auto max-w-6xl text-center">
         <motion.div

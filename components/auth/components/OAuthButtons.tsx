@@ -17,7 +17,7 @@ export default function OAuthButtons({}: OAuthButtonsProps) {
   const handleGoogleSignIn = async () => {
     setIsGoogleLoading(true);
     try {
-      await signIn("google");
+      await signIn("google", { redirectTo: "/overview" });
     } catch (error) {
       console.error("Google sign-in error:", error);
     } finally {

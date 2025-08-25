@@ -10,7 +10,7 @@ export default function Faqs() {
   return (
     <section
       id="faq"
-      className="mx-auto w-full max-w-6xl px-4 py-20 md:px-6 lg:px-8 lg:py-24 scroll-mt-28"
+      className="mx-auto bg-content2/40 w-full  px-4 py-16 md:py-32 md:px-6 lg:px-8 scroll-mt-28"
     >
       <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-6">
         {/* Pill */}

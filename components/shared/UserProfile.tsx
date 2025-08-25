@@ -13,6 +13,7 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { useQuery } from "convex-helpers/react/cache/hooks";
+import { useRouter } from "next/navigation";
 
 import { api } from "@/convex/_generated/api";
 
@@ -40,11 +41,12 @@ const navigationItems = [
 const UserProfile = React.memo(() => {
   const user = useQuery(api.core.users.getCurrentUser);
   const { signOut } = useAuthActions();
+  const router = useRouter();
 
   const handleLogout = useCallback(async () => {
     await signOut();
-    window.location.href = "/signin";
-  }, [signOut]);
+    router.push("/signin");
+  }, [signOut, router]);
 
   const userName = user?.name || "User";
   const userEmail = user?.email || "";

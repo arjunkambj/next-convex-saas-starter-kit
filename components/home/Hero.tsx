@@ -26,7 +26,7 @@ export default function Hero() {
         >
           <HeroAvatarGroup />
           <span className="text-xs font-semibold text-default-600">
-            1000+ accounts ipsum
+            Production-ready starter kit
           </span>
         </motion.div>
 
@@ -38,9 +38,9 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="font-extrabold tracking-tight text-4xl sm:text-5xl md:text-[56px] xl:text-[64px] leading-[1.08] bg-gradient-to-r from-default-900 to-default-700 bg-clip-text text-transparent"
         >
-          Track leads. Convert faster.
+          Build Your SaaS Faster
           <br className="hidden sm:block" />
-          Grow with clarity.
+          with Convex & Next.js
         </motion.h1>
 
         <motion.p
@@ -49,8 +49,8 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-3 text-[15px] sm:text-base md:text-[18px] text-default-600 max-w-2xl mx-auto"
         >
-          LeadNova gives you a clean, real‑time view of your funnel so you can
-          focus on actions that drive revenue—not spreadsheets.
+          Production-ready starter with Convex real-time backend, authentication,
+          Polar subscriptions, team management, and admin panel—all set up and ready to ship.
         </motion.p>
 
         <motion.div
@@ -66,7 +66,7 @@ export default function Hero() {
             size="lg"
             endContent={<Icon icon="lucide:chevron-right" width={20} />}
           >
-            Get Started
+            Start Building
           </Button>
           <Button
             as={Link}
@@ -76,7 +76,7 @@ export default function Hero() {
             size="lg"
             className="px-8"
           >
-            See pricing
+            View Features
           </Button>
         </motion.div>
 

@@ -5,7 +5,7 @@ import { Drawer, DrawerContent, DrawerBody } from "@heroui/drawer";
 import { useAtom } from "jotai";
 
 import { sidebarOpenAtom } from "@/store/atoms";
-import { useDebounce } from "@/hooks";
+import { useDebounce } from "@/hooks/useDebounce";
 
 import SidebarContent from "./components/SidebarContent";
 

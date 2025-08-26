@@ -298,3 +298,115 @@ export const getOrganizationWithMembers = query({
     };
   },
 });
+
+// Batch invite team members
+export const inviteTeamMembers = mutation({
+  args: {
+    members: v.array(v.object({
+      email: v.string(),
+      role: v.union(v.literal("manager"), v.literal("member")),
+    })),
+    expiresInDays: v.optional(v.number()),
+  },
+  returns: v.object({
+    success: v.boolean(),
+    invited: v.number(),
+    failed: v.array(v.object({
+      email: v.string(),
+      reason: v.string(),
+    })),
+  }),
+  handler: async (ctx, args) => {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) throw new Error("Unauthorized");
+
+    const inviter = await ctx.db.get(userId);
+    if (!inviter || !inviter.organizationId) {
+      throw new Error("User not associated with an organization");
+    }
+
+    if (!await isUserAdmin(ctx, userId)) {
+      throw new Error("Only admins can invite users");
+    }
+
+    const organization = await ctx.db.get(inviter.organizationId);
+    if (!organization) {
+      throw new Error("Organization not found");
+    }
+
+    const now = Date.now();
+    const expiresInDays = args.expiresInDays || 30;
+    const expiresAt = now + (expiresInDays * 24 * 60 * 60 * 1000);
+
+    let invited = 0;
+    const failed: { email: string; reason: string }[] = [];
+    const newMemberIds: Id<"users">[] = [];
+
+    for (const member of args.members) {
+      const normalizedEmail = normalizeEmail(member.email);
+
+      try {
+        const existingUsers = await ctx.db
+          .query("users")
+          .filter((q) => q.eq(q.field("email"), normalizedEmail))
+          .collect();
+        
+        const existingUser = existingUsers[0];
+
+        if (existingUser) {
+          if (existingUser.status === "active") {
+            failed.push({ email: member.email, reason: "User already exists and is active" });
+            continue;
+          }
+          if (existingUser.status === "invited" && existingUser.organizationId === inviter.organizationId) {
+            await ctx.db.patch(existingUser._id, {
+              invitedBy: userId,
+              invitedAt: now,
+              inviteExpiresAt: expiresAt,
+              role: member.role,
+              updatedAt: now,
+            });
+            invited++;
+            continue;
+          }
+        }
+
+        const newUserId = await ctx.db.insert("users", {
+          email: normalizedEmail,
+          status: "invited",
+          role: member.role,
+          organizationId: inviter.organizationId,
+          invitedBy: userId,
+          invitedAt: now,
+          inviteExpiresAt: expiresAt,
+          isOnboarded: false,
+          createdAt: now,
+          updatedAt: now,
+        });
+
+        newMemberIds.push(newUserId);
+        invited++;
+      } catch (error) {
+        failed.push({ 
+          email: member.email, 
+          reason: error instanceof Error ? error.message : "Failed to invite user" 
+        });
+      }
+    }
+
+    if (newMemberIds.length > 0) {
+      const updatedMembers = [...organization.members, ...newMemberIds];
+      await ctx.db.patch(inviter.organizationId, {
+        members: updatedMembers,
+        updatedAt: now,
+      });
+    }
+
+    return {
+      success: invited > 0,
+      invited,
+      failed,
+    };
+  },
+});
+

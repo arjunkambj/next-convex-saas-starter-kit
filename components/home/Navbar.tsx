@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { homeNavLinks } from "@/constants/homeNavlink";
 import { Button } from "@heroui/react";
-
+import { Authenticated, Unauthenticated } from "convex/react";
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -50,9 +50,16 @@ export default function Navbar() {
           ))}
         </div>
 
-        <Button as={Link} href="/signin" color="primary">
-          Get Started
-        </Button>
+        <Authenticated>
+          <Button as={Link} href="/overview" color="primary">
+            App
+          </Button>
+        </Authenticated>
+        <Unauthenticated>
+          <Button as={Link} href="/signin" color="primary">
+            Get Started
+          </Button>
+        </Unauthenticated>
 
         <button
           aria-label="Toggle menu"

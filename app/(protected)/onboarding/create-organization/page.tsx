@@ -1,7 +1,13 @@
+import OnboardingCard from "@/components/onboarding/OnboardingCard";
+import OrganizationForm from "@/components/onboarding/OrganizationForm";
+
 export default function CreateOrganizationPage() {
   return (
-    <div className="w-full flex justify-center items-center">
-      <h1 className="text-2xl font-bold">Create Organization</h1>
-    </div>
+    <OnboardingCard
+      title="Create an Organization"
+      subtitle="Set up your space to get started"
+    >
+      <OrganizationForm />
+    </OnboardingCard>
   );
 }

@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import OnboardingRedirect from "@/components/onboarding/OnboardingRedirect";
 
 export default function OnboardingPage() {
-  redirect("/onboarding/create-organization");
+  return <OnboardingRedirect />;
 }

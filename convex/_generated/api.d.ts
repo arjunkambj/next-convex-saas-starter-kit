@@ -14,6 +14,7 @@ import type {
   FunctionReference,
 } from "convex/server";
 import type * as auth from "../auth.js";
+import type * as core_onboarding from "../core/onboarding.js";
 import type * as core_organizations from "../core/organizations.js";
 import type * as core_users from "../core/users.js";
 import type * as helpers_ResendOTP from "../helpers/ResendOTP.js";
@@ -31,6 +32,7 @@ import type * as schema_core from "../schema/core.js";
  */
 declare const fullApi: ApiFromModules<{
   auth: typeof auth;
+  "core/onboarding": typeof core_onboarding;
   "core/organizations": typeof core_organizations;
   "core/users": typeof core_users;
   "helpers/ResendOTP": typeof helpers_ResendOTP;

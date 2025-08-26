@@ -105,29 +105,6 @@ export async function handleExistingUser(
     }
 
     await ctx.db.patch(existingUser._id, updates);
-    
-    // If user was invited and has an organization, create onboarding record if needed
-    if (isInvited && existingUser.organizationId) {
-      const onboarding = await ctx.db
-        .query("onboarding")
-        .withIndex("byUserOrganization", (q) => 
-          q.eq("userId", existingUser._id).eq("organizationId", existingUser.organizationId!)
-        )
-        .first();
-      
-      if (!onboarding) {
-        await ctx.db.insert("onboarding", {
-          userId: existingUser._id,
-          organizationId: existingUser.organizationId,
-          onboardingStep: 1,
-          isCompleted: false,
-          startedAt: now,
-          createdAt: now,
-          updatedAt: now,
-        });
-        console.log(`[AUTH] Created onboarding for invited user ${existingUser.email}`);
-      }
-    }
 
     return existingUser._id;
   }
@@ -162,12 +139,9 @@ export async function createOrganizationForUser(
 ): Promise<void> {
   const now = Date.now();
 
-  const slug = await generateUniqueSlug(ctx, user.name || "org");
-
   const orgId = await ctx.db.insert("organizations", {
     name: user.name ? `${user.name}'s Organization` : "My Organization",
     ownerId: userId,
-    slug: slug,
     members: [userId],
     createdAt: now,
     updatedAt: now,
@@ -190,42 +164,4 @@ export async function createOrganizationForUser(
   });
 
   console.log(`[AUTH] Created organization ${orgId} for user ${user.email}`);
-}
-
-async function generateUniqueSlug(
-  ctx: MutationCtx,
-  baseName: string
-): Promise<string> {
-  if (!baseName || baseName.trim().length === 0) {
-    baseName = "org";
-  }
-
-  const baseSlug = baseName
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .substring(0, 40);
-
-  const cleanSlug = baseSlug || "org";
-
-  let slug = cleanSlug;
-  let counter = 1;
-  const maxAttempts = 100;
-
-  while (counter <= maxAttempts) {
-    const existing = await ctx.db
-      .query("organizations")
-      .withIndex("bySlug", (q) => q.eq("slug", slug))
-      .first();
-
-    if (!existing) {
-      return slug;
-    }
-
-    slug = `${cleanSlug}-${counter}`;
-    counter++;
-  }
-
-  const timestamp = Date.now().toString(36);
-  return `${cleanSlug}-${timestamp}`;
 }

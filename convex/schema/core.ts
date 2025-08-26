@@ -66,15 +66,14 @@ export const organizations = defineTable({
   /// Organization Details
   name: v.string(),
   image: v.optional(v.string()),
-  slug: v.string(),
 
   ///// Members of the organization
   members: v.array(v.id("users")),
+  
   createdAt: v.optional(v.number()),
   updatedAt: v.optional(v.number()),
 })
   .index("byName", ["name"])
-  .index("bySlug", ["slug"])
   .index("byOwner", ["ownerId"]);
 
 ///// Invitation

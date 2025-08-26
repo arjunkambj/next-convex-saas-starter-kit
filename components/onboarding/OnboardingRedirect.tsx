@@ -5,7 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { Spinner } from "@heroui/react";
 import { useOnboardingStatus } from "@/hooks/useOnboarding";
 import { useCurrentUser } from "@/hooks/useUser";
-import { getOnboardingRoute } from "@/lib/onboarding";
+import { getOnboardingRoute } from "@/configs/onboarding";
 
 export default function OnboardingRedirect() {
   const router = useRouter();
@@ -46,7 +46,7 @@ export default function OnboardingRedirect() {
       onboardingStatus.isCompleted,
       user.isOnboarded
     );
-    
+
     // Only redirect if we're not already on the correct route
     if (pathname !== route) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -59,7 +59,9 @@ export default function OnboardingRedirect() {
     <div className="flex h-screen w-full items-center justify-center">
       <div className="flex flex-col items-center gap-4">
         <Spinner size="lg" />
-        <p className="text-sm text-default-500">Setting up your onboarding...</p>
+        <p className="text-sm text-default-500">
+          Setting up your onboarding...
+        </p>
       </div>
     </div>
   );

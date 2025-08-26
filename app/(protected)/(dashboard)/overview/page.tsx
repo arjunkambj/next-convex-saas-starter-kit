@@ -1,9 +1,5 @@
-import UserProfile from "@/components/shared/UserProfile";
+import OverviewView from "@/components/dashboard/overview/OverviewView";
 
 export default function DashboardOverview() {
-  return (
-    <div className="flex justify-end items-center p-6">
-      <UserProfile />
-    </div>
-  );
+  return <OverviewView />;
 }

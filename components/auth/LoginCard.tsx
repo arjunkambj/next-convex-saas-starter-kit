@@ -96,7 +96,11 @@ export default function LoginCard() {
   const handleSubmit = page === 0 ? handleEmailSubmit : handleOtpSubmit;
 
   return (
-    <AuthCard title={getPageTitle()} showBack={page > 0} onBack={() => setPage([0, -1])}>
+    <AuthCard
+      title={getPageTitle()}
+      showBack={page > 0}
+      onBack={() => setPage([0, -1])}
+    >
       {page === 0 && (
         <>
           <OAuthButtons mode="login" />
@@ -132,20 +136,26 @@ export default function LoginCard() {
               <Button
                 fullWidth
                 type="submit"
-                className="bg-gradient-to-br from-primary-500 to-primary-600 text-white"
-                startContent={<Icon className="pointer-events-none text-2xl" icon="solar:letter-bold" />}
+                color="primary"
+                startContent={
+                  <Icon
+                    className="pointer-events-none text-2xl"
+                    icon="solar:letter-bold"
+                  />
+                }
               >
                 Continue with Email
               </Button>
             </>
           ) : (
             <>
-              <OtpInput value={otp} onChange={setOtp} isInvalid={!isOtpValid} email={email} />
-              <Button
-                fullWidth
-                className="bg-gradient-to-br from-primary-500 to-primary-600 text-white"
-                type="submit"
-              >
+              <OtpInput
+                value={otp}
+                onChange={setOtp}
+                isInvalid={!isOtpValid}
+                email={email}
+              />
+              <Button fullWidth color="primary" type="submit">
                 Verify
               </Button>
             </>

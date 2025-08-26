@@ -5,7 +5,7 @@ import { Link } from "@heroui/react";
 import { Icon } from "@iconify/react";
 
 import Logo from "@/components/shared/Logo";
-import { footerNavigation } from "@/constants/navigation/footerNavigation";
+import { footerNavigation } from "@/constants/footerNavigation";
 
 const footerSections = [
   {

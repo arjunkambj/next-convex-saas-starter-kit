@@ -2,8 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  allowedDevOrigins: ["local.trypixelplay.in"],
-  typedRoutes: true,
+  allowedDevOrigins: ["local.trypixelplay.in", "localhost:3000"],
   images: {
     remotePatterns: [
       {

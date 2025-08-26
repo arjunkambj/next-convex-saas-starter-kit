@@ -65,7 +65,6 @@ export default function Hero() {
             href="/signin"
             size="lg"
             endContent={<Icon icon="lucide:chevron-right" width={20} />}
-            className="bg-gradient-to-br from-primary-500 to-primary-600 text-white"
           >
             Get Started
           </Button>

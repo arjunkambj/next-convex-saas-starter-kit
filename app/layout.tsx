@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "@/style/globals.css";
 import { Providers } from "@/components/Providers";
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 
-const inter = Inter({
-  variable: "--font-inter",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
 });
 
@@ -21,10 +21,8 @@ export default function RootLayout({
 }>) {
   return (
     <ConvexAuthNextjsServerProvider>
-      <html lang="en">
-        <body
-          className={`${inter.className} antialiased bg-background/50 dark:bg-background min-h-dvh`}
-        >
+      <html lang="en" suppressHydrationWarning>
+        <body className={`${dmSans.className} antialiased min-h-dvh`}>
           <Providers>{children}</Providers>
         </body>
       </html>

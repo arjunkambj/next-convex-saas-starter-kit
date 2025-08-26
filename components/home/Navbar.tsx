@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Logo from "../shared/Logo";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { homeNavLinks } from "@/constants/navigation/homeNavlink";
+import { homeNavLinks } from "@/constants/homeNavlink";
 import { Button } from "@heroui/react";
 
 export default function Navbar() {
@@ -50,11 +50,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        <Button
-          as={Link}
-          href="/signin"
-          className="hidden bg-gradient-to-br from-primary-500 to-primary-600 text-white md:flex"
-        >
+        <Button as={Link} href="/signin" color="primary">
           Get Started
         </Button>
 
